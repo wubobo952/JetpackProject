@@ -1,0 +1,46 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    buildToolsVersion rootProject.ext.android.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation rootProject.ext.deps.core_ktx
+    implementation rootProject.ext.deps.appcompat
+    testImplementation rootProject.ext.deps.junit
+    androidTestImplementation  rootProject.ext.deps.test_ext
+    androidTestImplementation  rootProject.ext.deps.espresso
+
+    implementation rootProject.ext.deps.lifecycle_livedata
+    implementation rootProject.ext.deps.lifecycle_livedata_core
+    implementation rootProject.ext.deps.lifecycle_runtime
+    implementation rootProject.ext.deps.lifecycle_runtime_ktx
+    implementation rootProject.ext.deps.lifecycle_viewmodel
+    implementation rootProject.ext.deps.lifecycle_viewmodel_ktx
+    implementation rootProject.ext.deps.retrofit
+    implementation rootProject.ext.deps.converter_gson
+    implementation rootProject.ext.deps.kotlinx_coroutines_core
+    implementation rootProject.ext.deps.kotlinx_coroutines
+    implementation rootProject.ext.deps.interceptor
+    implementation rootProject.ext.deps.coil
+
+
+}
