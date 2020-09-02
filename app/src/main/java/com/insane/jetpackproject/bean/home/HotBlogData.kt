@@ -1,5 +1,7 @@
 package com.insane.jetpackproject.bean.home
 
+import java.io.Serializable
+
 /**
  * Created by Insane
  */
@@ -70,4 +72,4 @@ data class HotBlogData(
     var visible: Int = 0,
     var zan: Int = 0,
     var tags: List<*>
-)
+): Serializable

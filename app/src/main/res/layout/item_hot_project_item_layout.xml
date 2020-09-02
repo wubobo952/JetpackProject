@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="5dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <TextView
+        android:id="@+id/vHotProjectTiter"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:fontFamily="serif-monospace"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        tools:text="这是我看过关于微服务架构更好的文章" />
+
+    <TextView
+        android:id="@+id/vHotProjectAuthor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/vHotProjectTiter"
+        app:layout_constraintLeft_toLeftOf="@+id/vHotProjectTiter"
+        android:textColor="@color/black_a6"
+        android:textSize="12sp"
+        android:layout_marginTop="3dp"
+        android:text="@string/author" />
+
+    <TextView
+        android:id="@+id/vHotProjectAuthorTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@+id/vHotProjectAuthor"
+        app:layout_constraintLeft_toRightOf="@+id/vHotProjectAuthor"
+        android:textSize="12sp"
+        android:layout_marginStart="5dp"
+        android:textColor="@color/black_d9"
+        tools:text="Insane" />
+
+    <TextView
+        android:id="@+id/vHotProjectTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@+id/vHotProjectAuthorTv"
+        app:layout_constraintLeft_toRightOf="@+id/vHotProjectAuthorTv"
+        android:textColor="@color/black_a6"
+        android:textSize="12sp"
+        android:layout_marginStart="10dp"
+        android:text="@string/tag" />
+
+    <TextView
+        android:id="@+id/vHotProjectTagTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@+id/vHotProjectTag"
+        app:layout_constraintLeft_toRightOf="@+id/vHotProjectTag"
+        android:textSize="12sp"
+        android:layout_marginStart="5dp"
+        android:textColor="@color/black_d9"
+        tools:text="Insane" />
+
+
+    <TextView
+        android:id="@+id/vHotProjectTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@+id/vHotProjectTagTv"
+        app:layout_constraintLeft_toRightOf="@+id/vHotProjectTagTv"
+        android:textSize="12sp"
+        android:textColor="@color/black_a6"
+        android:layout_marginStart="10dp"
+        android:text="@string/time" />
+
+    <TextView
+        android:id="@+id/vHotProjectTimeTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@+id/vHotProjectTime"
+        app:layout_constraintLeft_toRightOf="@+id/vHotProjectTime"
+        android:textSize="12sp"
+        android:layout_marginStart="5dp"
+        android:textColor="@color/black_d9"
+        tools:text="Insane" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

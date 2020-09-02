@@ -1,5 +1,8 @@
 package com.insane.core.network
 
+import com.insane.core.base.App
+import com.insane.core.network.interceptor.AddCookiesInterceptor
+import com.insane.core.network.interceptor.SaveCookiesInterceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -21,7 +24,9 @@ open class RetrofitEngine private constructor() {
             .readTimeout(HttpConfig.READ_TIME_OUT, TimeUnit.MILLISECONDS)
             .writeTimeout(HttpConfig.WRITE_TIME_OUT, TimeUnit.MILLISECONDS)
             .connectTimeout(HttpConfig.CONNECT_TIME_OUT, TimeUnit.MILLISECONDS)
-            .addInterceptor(HttpLoggingInterceptor())
+            .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
+            .addInterceptor(AddCookiesInterceptor())
+            .addInterceptor(SaveCookiesInterceptor())
             .build()
     }
 

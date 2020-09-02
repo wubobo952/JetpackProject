@@ -3,6 +3,7 @@ package com.insane.jetpackproject.api
 import com.insane.core.network.BaseResponse
 import com.insane.jetpackproject.bean.home.Banner
 import com.insane.jetpackproject.bean.home.HotBlog
+import com.insane.jetpackproject.bean.home.HotProjectTree
 import retrofit2.http.GET
 import retrofit2.http.Path
 
@@ -16,4 +17,7 @@ interface HomeApiService {
 
     @GET("article/list/{path}/json")
     suspend fun getHotBlog(@Path("path") page: Int): BaseResponse<HotBlog>
+
+    @GET("project/tree/json")
+    suspend fun getHotProject(): BaseResponse<MutableList<HotProjectTree>>
 }

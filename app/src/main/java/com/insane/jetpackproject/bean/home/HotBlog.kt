@@ -1,5 +1,7 @@
 package com.insane.jetpackproject.bean.home
 
+import java.io.Serializable
+
 /**
  * Created by Insane
  */
@@ -19,5 +21,5 @@ data class HotBlog(
     var pageCount: Int = 0,
     var size: Int = 0,
     var total: Int = 0,
-    var datas: List<HotBlogData>
-)
+    var datas: MutableList<HotBlogData>
+):Serializable

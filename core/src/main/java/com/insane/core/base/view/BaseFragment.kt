@@ -25,6 +25,7 @@ abstract class BaseFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         iniView()
+        showUi()
     }
 
     abstract fun iniView()
@@ -40,4 +41,6 @@ abstract class BaseFragment : Fragment() {
     }
 
     abstract fun lazyInit()
+
+    abstract fun showUi()
 }

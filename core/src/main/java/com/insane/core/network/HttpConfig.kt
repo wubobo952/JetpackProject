@@ -8,4 +8,7 @@ object HttpConfig {
     const val READ_TIME_OUT = 10000L
     const val WRITE_TIME_OUT = 10000L
     const val CONNECT_TIME_OUT = 10000L
+
+    const val SET_COOKIES = "Set-Cookie"
+    const val COOKIE = "Cookie"
 }

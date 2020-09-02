@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">JetpackProject</string>
+
+
+    <string name="author">作者:</string>
+    <string name="tag">分类:</string>
+    <string name="time">时间:</string>
 </resources>

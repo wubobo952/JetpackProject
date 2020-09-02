@@ -22,6 +22,9 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
 
     buildTypes {
         release {
@@ -41,11 +44,14 @@ dependencies {
     androidTestImplementation  rootProject.ext.deps.test_ext
     androidTestImplementation  rootProject.ext.deps.espresso
     implementation  rootProject.ext.deps.material
+    implementation  rootProject.ext.deps.BaseRecyclerViewAdapterHelper
     implementation rootProject.ext.deps.retrofit
     implementation rootProject.ext.deps.converter_gson
     implementation rootProject.ext.deps.kotlinx_coroutines_core
     implementation rootProject.ext.deps.kotlinx_coroutines
     implementation rootProject.ext.deps.coil
+    implementation rootProject.ext.deps.banner
+
 
     implementation project(path: ':core')
 

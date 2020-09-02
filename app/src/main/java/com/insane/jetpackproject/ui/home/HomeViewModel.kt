@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import com.insane.core.base.viewmodel.BaseViewModel
 import com.insane.jetpackproject.bean.home.Banner
 import com.insane.jetpackproject.bean.home.HotBlog
+import com.insane.jetpackproject.bean.home.HotProjectTree
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 
@@ -14,6 +15,7 @@ import kotlinx.coroutines.launch
 class HomeViewModel(private var repos: HomeReposition) : BaseViewModel() {
     var bannerLiveData = MutableLiveData<List<Banner>>()
     var hotBlogLiveData = MutableLiveData<HotBlog>()
+    var hotProjectLiveData = MutableLiveData<MutableList<HotProjectTree>>()
 
     fun getBanner() {
         lifecycleScope.launch {
@@ -26,7 +28,13 @@ class HomeViewModel(private var repos: HomeReposition) : BaseViewModel() {
         lifecycleScope.launch {
             val hotBlog = repos.getHotBlog(page)
             hotBlogLiveData.value = hotBlog.data
-            Log.e("TAG--", hotBlog.data.toString())
+        }
+    }
+
+    fun getHotProject() {
+        lifecycleScope.launch {
+            val hotProject = repos.getProject()
+            hotProjectLiveData.value = hotProject.data
         }
     }
 

@@ -3,4 +3,30 @@
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
+
+    <!-- 透明度参考表
+       |    100 %    |      00
+       |    80  %    |      33
+       |    75  %    |      40
+       |    70  %    |      4D
+       |    65  %    |      59
+       |    60  %    |      66
+       |    55  %    |      73
+       |    50  %    |      80
+       |    45  %    |      8C
+       |    40  %    |      99
+       |    35  %    |      A6
+       |    30  %    |      B3
+       |    25  %    |      BF
+       |    20  %    |      CC
+       |    15  %    |      D9
+       |    10  %    |      E6
+       |    5   %    |      F2
+       |    0   %    |      FF
+   -->
+    <color name="black">#000000</color>
+    <color name="black_d9">#D9000000</color>
+    <color name="black_a6">#a6000000</color>
+    <color name="color_d8d8d8">#d8d8d8</color>
+
 </resources>

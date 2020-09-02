@@ -23,4 +23,8 @@ class SecondFragment : BaseFragment() {
     override fun lazyInit() {
     }
 
+    override fun showUi() {
+
+    }
+
 }
