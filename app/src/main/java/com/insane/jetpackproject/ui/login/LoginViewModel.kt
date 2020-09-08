@@ -3,6 +3,8 @@ package com.insane.jetpackproject.ui.login
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.insane.core.base.viewmodel.BaseViewModel
+import com.insane.core.network.BaseException
+import com.insane.core.network.RequestCallback
 import com.insane.jetpackproject.bean.login.Login
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
@@ -14,8 +16,13 @@ class LoginViewModel(private var mRepos: LoginReposition) : BaseViewModel() {
     val userInfoLiveData = MutableLiveData<Login>()
     fun login(userName: String, passWord: String) {
         lifecycleScope.launch {
-            val login = mRepos.login(userName, passWord)
-            userInfoLiveData.value = login.data
+            mRepos.execute(object : RequestCallback<Login> {
+                override fun onSuccess(data: Login) {
+                    userInfoLiveData.value = data
+                }
+            }) {
+                mRepos.login(userName, passWord)
+            }
         }
     }
 

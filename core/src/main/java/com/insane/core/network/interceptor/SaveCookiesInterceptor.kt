@@ -1,4 +1,5 @@
 package com.insane.core.network.interceptor
+
 import com.insane.core.base.utils.SpUtil
 import com.insane.core.network.HttpConfig
 import okhttp3.Interceptor
@@ -56,7 +57,7 @@ class SaveCookiesInterceptor : Interceptor {
         cookies: String
     ) {
         // 如果 response 的header 中包含 cookie 信息。并且此次请求是登录或者注册才保存cookie
-        if (url.isNotEmpty() && (url.contains("user/login"))) {
+        if (url.isNotEmpty() && (url.contains(HttpConfig.LOGIN_INTERCEPTOR))) {
             SpUtil.put(url, cookies)
             SpUtil.put(domain, cookies)
         }

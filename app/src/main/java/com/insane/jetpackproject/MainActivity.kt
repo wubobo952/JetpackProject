@@ -1,5 +1,6 @@
 package com.insane.jetpackproject
 
+import android.content.Intent
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentPagerAdapter
 import com.insane.core.base.kt.loadCircleImage
@@ -7,6 +8,7 @@ import com.insane.core.base.view.BaseActivity
 import com.insane.jetpackproject.ui.SecondFragment
 import com.insane.jetpackproject.ui.adapter.MainVpAdapter
 import com.insane.jetpackproject.ui.home.HomeFragment
+import com.insane.jetpackproject.ui.login.LoginActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -31,6 +33,9 @@ class MainActivity : BaseActivity() {
 
     override fun initData() {
         vMainUser.loadCircleImage("https://www.wanandroid.com/blogimgs/bb0747bd-f59f-4733-8d29-0735502f0c6c.png")
+        vMainUser.setOnClickListener {
+            startActivity(Intent(this,LoginActivity::class.java))
+        }
     }
 
 }

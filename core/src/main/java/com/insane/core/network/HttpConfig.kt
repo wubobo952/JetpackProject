@@ -11,4 +11,8 @@ object HttpConfig {
 
     const val SET_COOKIES = "Set-Cookie"
     const val COOKIE = "Cookie"
+    const val SUCCESS_CODE = 0
+    const val FAIL_CODE = -100
+
+    const val LOGIN_INTERCEPTOR = "user/login"
 }

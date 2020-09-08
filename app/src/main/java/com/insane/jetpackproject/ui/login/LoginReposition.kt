@@ -5,6 +5,7 @@ import com.insane.core.network.BaseResponse
 import com.insane.jetpackproject.api.LoginApiService
 import com.insane.jetpackproject.bean.login.Login
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.withContext
 
 /**
@@ -16,5 +17,4 @@ class LoginReposition : BaseReposition<LoginApiService>(LoginApiService::class.j
             serviceApi.login(userName, passWord)
         }
     }
-
 }
