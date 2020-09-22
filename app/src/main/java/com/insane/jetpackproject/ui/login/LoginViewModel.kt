@@ -7,22 +7,20 @@ import com.insane.core.network.BaseException
 import com.insane.core.network.RequestCallback
 import com.insane.jetpackproject.bean.login.Login
 import kotlinx.coroutines.cancel
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 /**
  *Created by Insane
  */
 class LoginViewModel(private var mRepos: LoginReposition) : BaseViewModel() {
-    val userInfoLiveData = MutableLiveData<Login>()
+    private val userInfoLiveData = MutableLiveData<Login>()
     fun login(userName: String, passWord: String) {
         lifecycleScope.launch {
-            mRepos.execute(object : RequestCallback<Login> {
-                override fun onSuccess(data: Login) {
-                    userInfoLiveData.value = data
+            mRepos.login(userName, passWord)
+                .collect {
+                    userInfoLiveData.value = it
                 }
-            }) {
-                mRepos.login(userName, passWord)
-            }
         }
     }
 
