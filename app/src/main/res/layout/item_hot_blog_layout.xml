@@ -27,7 +27,7 @@
         android:textColor="@color/black_a6"
         android:textSize="12sp"
         android:layout_marginTop="3dp"
-        android:text="@string/author" />
+        tools:text="@string/author" />
 
     <TextView
         android:id="@+id/vHotBlogAuthorTv"

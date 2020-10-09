@@ -3,10 +3,12 @@ package com.insane.jetpackproject.ui.home
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.insane.core.base.viewmodel.BaseViewModel
+import com.insane.core.network.RequestCallback
 import com.insane.jetpackproject.bean.home.Banner
 import com.insane.jetpackproject.bean.home.HotBlog
 import com.insane.jetpackproject.bean.home.HotProjectTree
 import kotlinx.coroutines.cancel
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 /**
@@ -19,27 +21,28 @@ class HomeViewModel(private var repos: HomeReposition) : BaseViewModel() {
 
     fun getBanner() {
         lifecycleScope.launch {
-            val banner = repos.getBanner()
-            bannerLiveData.value = banner.data
+            repos.getBanner()
+                .collect{
+                    bannerLiveData.value=it
+                }
         }
     }
 
     fun getHotBlog(page: Int) {
         lifecycleScope.launch {
-            val hotBlog = repos.getHotBlog(page)
-            hotBlogLiveData.value = hotBlog.data
+            repos.getHotBlog(page)
+                .collect {
+                    hotBlogLiveData.value=it
+                }
         }
     }
 
     fun getHotProject() {
         lifecycleScope.launch {
-            val hotProject = repos.getProject()
-            hotProjectLiveData.value = hotProject.data
+            repos.getProject()
+                .collect {
+                    hotProjectLiveData.value=it
+                }
         }
     }
-
-    override fun onCleared() {
-        lifecycleScope.cancel()
-    }
-
 }

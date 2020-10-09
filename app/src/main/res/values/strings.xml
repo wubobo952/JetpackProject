@@ -3,6 +3,11 @@
 
 
     <string name="author">作者:</string>
+    <string name="share">分享人:</string>
     <string name="tag">分类:</string>
     <string name="time">时间:</string>
+    <string name="welcome">Hey\n奋斗吧程序猿</string>
+    <string name="log_in">登录</string>
+    <string name="user_hint">"请输入账号"</string>
+    <string name="password_hint">"请输入密码"</string>
 </resources>

@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import com.insane.core.base.viewmodel.BaseViewModel
 import com.insane.jetpackproject.bean.mine.CollectBlog
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 /**
@@ -13,9 +14,10 @@ class MineViewModel(private val mRepos: MineReposition) : BaseViewModel() {
     var mCollectBlogData = MutableLiveData<CollectBlog>()
     fun getCollectBlog(page: Int) {
         lifecycleScope.launch {
-            delay(1000)
-            val collectBlog = mRepos.getCollectBlog(page)
-            mCollectBlogData.value = collectBlog.data
+            mRepos.getCollectBlog(page).collect {
+                mCollectBlogData.value = it
+
+            }
         }
     }
 }

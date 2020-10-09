@@ -1,11 +1,14 @@
 package com.insane.jetpackproject.ui.home
 
+import android.content.Intent
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.insane.core.base.utils.BaseConfig
 import com.insane.core.base.view.BaseFragment
 import com.insane.jetpackproject.R
 import com.insane.core.base.utils.BaseViewModelFactory
+import com.insane.jetpackproject.ui.WebViewActivity
 import com.insane.jetpackproject.ui.adapter.HotBlogAdapter
 import kotlinx.android.synthetic.main.fragment_hot_blog_layout.*
 
@@ -48,6 +51,12 @@ class HotBlogFragment : BaseFragment() {
                 loadMoreComplete()
                 mViewModel?.getHotBlog(++mPage)
             }
+        }
+
+        mAdapter.setOnItemClickListener { adapter, view, position ->
+            val intent = Intent(activity, WebViewActivity::class.java)
+            intent.putExtra(BaseConfig.PARAMETER, mAdapter.getItem(position).link)
+            startActivity(intent)
         }
 
     }

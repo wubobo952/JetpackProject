@@ -6,5 +6,9 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
-
+    <!--login edit-->
+    <style name="LoginEditText" parent="Theme.AppCompat.Light">
+        <item name="colorControlNormal">@color/color_CBD4DD</item>
+        <item name="colorControlActivated">@color/color_CBD4DD</item>
+    </style>
 </resources>

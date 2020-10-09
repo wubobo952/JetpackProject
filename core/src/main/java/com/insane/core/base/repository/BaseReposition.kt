@@ -18,27 +18,6 @@ open class BaseReposition<T>(api: Class<T>) {
     var serviceApi = RetrofitEngine.instance.getRetrofit(api)
     private val TAG = javaClass.simpleName
 
-
-    suspend fun <T> execute(
-        callback: RequestCallback<T>,
-        block: suspend () -> BaseResponse<T>
-    ) {
-        val response: BaseResponse<T>
-        try {
-            response = block()
-            if (response.errorMsg.isNotEmpty() || response.errorCode < HttpConfig.SUCCESS_CODE) throw BaseException(
-                response.errorCode,
-                response.errorMsg
-            )
-        } catch (throwable: Throwable) {
-            callback.onFail(BaseException(HttpConfig.FAIL_CODE, throwable.message))
-            return
-        }
-        withContext(Dispatchers.Main) {
-            callback.onSuccess(response.data)
-        }
-    }
-
     @ExperimentalCoroutinesApi
     suspend fun <T> execute(block: suspend () -> BaseResponse<T>) = flow<T> {
         emit(block.invoke().data)

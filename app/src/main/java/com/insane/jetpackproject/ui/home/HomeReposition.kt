@@ -8,30 +8,32 @@ import com.insane.jetpackproject.bean.home.HotBlog
 import com.insane.jetpackproject.bean.home.HotProjectTree
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.withContext
+import kotlinx.coroutines.flow.Flow
 
 /**
  *Created by Insane
  */
 class HomeReposition : BaseReposition<HomeApiService>(HomeApiService::class.java) {
-    suspend fun getBanner(): BaseResponse<List<Banner>> {
-        val block: suspend CoroutineScope.() -> BaseResponse<List<Banner>> = {
+    @OptIn(ExperimentalCoroutinesApi::class)
+    suspend fun getBanner():Flow<List<Banner>>{
+        return execute {
             serviceApi.getHomeBanner()
         }
-        return withContext(Dispatchers.IO, block)
     }
 
-    suspend fun getHotBlog(page: Int): BaseResponse<HotBlog> {
-        val block: suspend CoroutineScope.() -> BaseResponse<HotBlog> = {
-            serviceApi.getHotBlog(page)
-        }
-        return withContext(Dispatchers.IO, block)
+    @OptIn(ExperimentalCoroutinesApi::class)
+    suspend fun getHotBlog(page: Int): Flow<HotBlog> {
+       return execute {
+           serviceApi.getHotBlog(page)
+       }
     }
 
-    suspend fun getProject(): BaseResponse<MutableList<HotProjectTree>> {
-        val block: suspend CoroutineScope.() -> BaseResponse<MutableList<HotProjectTree>> = {
+    @OptIn(ExperimentalCoroutinesApi::class)
+    suspend fun getProject():Flow<MutableList<HotProjectTree>>{
+        return execute {
             serviceApi.getHotProject()
         }
-        return withContext(Dispatchers.IO, block)
     }
 }
