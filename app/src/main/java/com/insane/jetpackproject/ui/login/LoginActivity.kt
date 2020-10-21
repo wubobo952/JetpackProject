@@ -1,19 +1,13 @@
 package com.insane.jetpackproject.ui.login
 
-import android.content.Intent
 import android.graphics.Color
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.insane.core.base.view.BaseActivity
 import com.insane.core.base.utils.BaseViewModelFactory
-import com.insane.core.network.BaseException
-import com.insane.core.network.RequestCallback
 import com.insane.jetpackproject.R
-import com.insane.jetpackproject.bean.login.Login
-import com.insane.jetpackproject.ui.mine.MineActivity
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : BaseActivity() {
@@ -34,6 +28,7 @@ class LoginActivity : BaseActivity() {
             if (userName.isNotEmpty() && password.isNotEmpty()) {
                 mViewModel.login(userName, password)
             } else {
+                //todo
             }
         }
         edUserPassword.addTextChangedListener(object :TextWatcher{
@@ -52,6 +47,12 @@ class LoginActivity : BaseActivity() {
             }
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
             }
+        })
+    }
+
+    override fun initData() {
+        mViewModel.userInfoLiveData.observe(this, Observer {
+            finish()
         })
     }
 }

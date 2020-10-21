@@ -7,7 +7,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <TextView
-        android:id="@+id/vHotBlogTiter"
+        android:id="@+id/vHotBlogTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
@@ -22,8 +22,8 @@
         android:id="@+id/vHotBlogAuthor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/vHotBlogTiter"
-        app:layout_constraintLeft_toLeftOf="@+id/vHotBlogTiter"
+        app:layout_constraintTop_toBottomOf="@+id/vHotBlogTitle"
+        app:layout_constraintLeft_toLeftOf="@+id/vHotBlogTitle"
         android:textColor="@color/black_a6"
         android:textSize="12sp"
         android:layout_marginTop="3dp"

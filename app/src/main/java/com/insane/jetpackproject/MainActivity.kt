@@ -7,13 +7,14 @@ import com.insane.core.base.kt.loadCircleImage
 import com.insane.core.base.view.BaseActivity
 import com.insane.jetpackproject.ui.SecondFragment
 import com.insane.jetpackproject.ui.adapter.MainVpAdapter
+import com.insane.jetpackproject.ui.home.DailyQAFragment
 import com.insane.jetpackproject.ui.home.HomeFragment
 import com.insane.jetpackproject.ui.login.LoginActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 
 class MainActivity : BaseActivity() {
-    private val mHomeTitle = arrayOf("首页", "体系")
+    private val mHomeTitle = arrayOf("首页", "体系","问答")
     private var mFragments = mutableListOf<Fragment>()
 
     override fun getLayout() = R.layout.activity_main
@@ -21,6 +22,7 @@ class MainActivity : BaseActivity() {
     override fun initView() {
         mFragments.add(HomeFragment.newInstance())
         mFragments.add(SecondFragment.newInstance())
+        mFragments.add(DailyQAFragment.newInstance())
 
         vMainViewPager.adapter = MainVpAdapter(
             mFragments,

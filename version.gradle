@@ -32,7 +32,8 @@ ext {
             interceptor                  : 'com.squareup.okhttp3:logging-interceptor:3.12.0',
             coil                         : 'io.coil-kt:coil:0.12.0',
             BaseRecyclerViewAdapterHelper: 'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.4',
-            banner                       : 'com.youth.banner:banner:2.1.0'
+            banner                       : 'com.youth.banner:banner:2.1.0',
+            swiperefreshlayout           : 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
 
 
     ]

@@ -17,7 +17,6 @@ import kotlinx.android.synthetic.main.fragment_hot_blog_layout.*
  *Created by Insane
  */
 class HotBlogFragment : BaseFragment() {
-    private var mPage: Int = 0
     private val mAdapter by lazy {
         HotBlogAdapter()
     }
@@ -45,18 +44,21 @@ class HotBlogFragment : BaseFragment() {
             adapter = mAdapter
         }
 
+        mAdapter.let {
+            it.loadMoreModule.apply {
+                setOnLoadMoreListener {
+                    mViewModel?.getHotBlog(false)
+                }
+            }
 
-        mAdapter.loadMoreModule.apply {
-            setOnLoadMoreListener {
-                loadMoreComplete()
-                mViewModel?.getHotBlog(++mPage)
+            it.setOnItemClickListener { _, _, position ->
+                val intent = Intent(activity, WebViewActivity::class.java)
+                intent.putExtra(BaseConfig.PARAMETER, mAdapter.getItem(position).link)
+                startActivity(intent)
             }
         }
-
-        mAdapter.setOnItemClickListener { adapter, view, position ->
-            val intent = Intent(activity, WebViewActivity::class.java)
-            intent.putExtra(BaseConfig.PARAMETER, mAdapter.getItem(position).link)
-            startActivity(intent)
+        vHotItemRefresh.setOnRefreshListener {
+            mViewModel?.getHotBlog(true)
         }
 
     }
@@ -66,13 +68,19 @@ class HotBlogFragment : BaseFragment() {
             if (it.datas.isEmpty()) {
                 mAdapter.loadMoreModule.loadMoreEnd()
             } else {
-                mAdapter.addData(it.datas)
+                if (it.curPage == 1) {
+                    mAdapter.setNewInstance(it.datas)
+                    vHotItemRefresh.isRefreshing=false
+                } else {
+                    mAdapter.addData(it.datas)
+                    mAdapter.loadMoreModule.loadMoreComplete()
+                }
             }
         })
     }
 
 
     override fun lazyInit() {
-        mViewModel?.getHotBlog(mPage)
+        mViewModel?.getHotBlog(true)
     }
 }

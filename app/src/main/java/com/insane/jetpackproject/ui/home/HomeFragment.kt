@@ -1,11 +1,9 @@
 package com.insane.jetpackproject.ui.home
 
-import android.util.Log
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import coil.load
 import com.insane.core.base.kt.loadImageUrl
 import com.insane.core.base.utils.BaseViewModelFactory
 import com.insane.core.base.view.BaseFragment
@@ -39,7 +37,9 @@ class HomeFragment : BaseFragment() {
 
     override fun getLayout() = R.layout.fragment_home_layout
 
-    override fun iniView() {
+    override fun iniView() {}
+
+    override fun lazyInit() {
         mFragments.add(HotBlogFragment.newInstance())
         mFragments.add(HotProjectFragment.newInstance())
 
@@ -51,9 +51,7 @@ class HomeFragment : BaseFragment() {
                 FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT
             )
         vHomeTab.setupWithViewPager(vHomeViewPager)
-    }
 
-    override fun lazyInit() {
         mViewModel.getBanner()
     }
 

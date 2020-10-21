@@ -49,8 +49,8 @@ dependencies {
     implementation rootProject.ext.deps.converter_gson
     implementation rootProject.ext.deps.kotlinx_coroutines_core
     implementation rootProject.ext.deps.kotlinx_coroutines
-    implementation rootProject.ext.deps.coil
     implementation rootProject.ext.deps.banner
+    implementation rootProject.ext.deps.swiperefreshlayout
 
 
     implementation project(path: ':core')

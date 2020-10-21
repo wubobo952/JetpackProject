@@ -12,13 +12,13 @@ import java.util.concurrent.TimeUnit
 /**
  *Created by Insane
  */
-open class RetrofitEngine private constructor() {
+class RetrofitEngine private constructor() {
+
     companion object {
-        val instance: RetrofitEngine by lazy {
+        val instance: RetrofitEngine by lazy(mode = LazyThreadSafetyMode.SYNCHRONIZED) {
             RetrofitEngine()
         }
     }
-
     private fun okHttpClient(): OkHttpClient {
         return OkHttpClient.Builder()
             .readTimeout(HttpConfig.READ_TIME_OUT, TimeUnit.MILLISECONDS)
